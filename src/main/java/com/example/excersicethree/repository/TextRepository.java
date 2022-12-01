@@ -7,7 +7,7 @@ import org.springframework.lang.NonNullApi;
 import java.util.List;
 
 public interface TextRepository extends ElasticsearchRepository<Text, String> {
-    @Override
-    List<Text> findAll();
+
+    List<Text> findAllByTextContainingIgnoreCase(String text);
 
 }

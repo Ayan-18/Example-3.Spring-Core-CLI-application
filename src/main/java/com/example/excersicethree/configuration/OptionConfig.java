@@ -11,6 +11,6 @@ public class OptionConfig {
     @Bean
     @Lazy
     public Text getTxt(String id, String text) {
-        return new Text(id, text);
+        return new Text(id,text);
     }
 }

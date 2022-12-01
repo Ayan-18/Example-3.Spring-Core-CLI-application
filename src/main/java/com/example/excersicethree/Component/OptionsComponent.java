@@ -11,6 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -30,13 +31,13 @@ public class OptionsComponent implements CommandLineRunner {
 
         try {
             CommandLine cl = slp.parse(options, args);
-
-            Text text = ctx.getBean(Text.class, "3", cl.getOptionValue("s"));
-
+            String id = UUID.randomUUID().toString();
+            Text text = ctx.getBean(Text.class,"", cl.getOptionValue("s"));
+            text.setId(id);
             if (cl.getOptionValue("e").equals("add")) {
                 textService.save(text);
             } else if (cl.getOptionValue("e").equals("search")){
-                List<Text> textList = textService.search();
+                List<Text> textList = textService.search(cl.getOptionValue("s"));
                 for (Text text1:textList) {
                     System.out.println(text1);
                 }

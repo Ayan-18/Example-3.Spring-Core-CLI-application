@@ -13,7 +13,7 @@ public class TextService {
     private final TextRepository textRepository;
 
     @Autowired
-    public TextService(TextRepository textRepository, RestHighLevelClient client) {
+    public TextService(TextRepository textRepository) {
         this.textRepository = textRepository;
     }
 
@@ -21,7 +21,7 @@ public class TextService {
         textRepository.save(text);
     }
 
-    public List<Text> search() {
-        return textRepository.findAll();
+    public List<Text> search(String text) {
+        return textRepository.findAllByTextContainingIgnoreCase(text);
     }
 }

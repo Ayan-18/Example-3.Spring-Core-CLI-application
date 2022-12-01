@@ -1,11 +1,14 @@
 package com.example.excersicethree.document;
 
+
 import com.example.excersicethree.helper.Indices;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.Setting;
+
 
 
 @Document(indexName = Indices.TEXT_INDEX)
@@ -25,6 +28,10 @@ public class Text {
 
     public Text() {
     }
+
+    public Text(String text) {
+    }
+
 
     public String getId() {
         return id;
